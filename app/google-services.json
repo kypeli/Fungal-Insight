@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "663405358646",
+    "project_id": "kypeli-mushrooms",
+    "storage_bucket": "kypeli-mushrooms.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663405358646:android:032be6af4d729bb10a3297",
+        "android_client_info": {
+          "package_name": "com.kypeli.mushrooms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-BmwRI04A6n61IX8eMs8HC0MnerEK3ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
