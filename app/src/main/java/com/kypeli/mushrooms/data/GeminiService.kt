@@ -44,7 +44,10 @@ class GeminiService {
 
     private val service: GenerativeModel =
         Firebase
-            .ai(backend = GenerativeBackend.googleAI())
+            .ai(
+                backend = GenerativeBackend.googleAI(),
+                useLimitedUseAppCheckTokens = true,
+            )
             .generativeModel(
                 modelName = "gemini-3.5-flash",
                 systemInstruction =
