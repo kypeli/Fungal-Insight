@@ -1,0 +1,45 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs.
+# https://editorconfig.org
+
+root = true
+
+# Global settings for all files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Kotlin specific rules (Matches official Android/Kotlin style guides)
+[*.{kt,kts}]
+indent_size = 4
+continuation_indent_size = 4
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true
+
+# Java specific rules
+[*.java]
+indent_size = 4
+continuation_indent_size = 8
+
+# XML (Layouts, Manifest, Resources)
+[*.xml]
+indent_size = 4
+continuation_indent_size = 4
+
+# Build scripts and configuration files
+[*.{gradle,gradle.kts}]
+indent_size = 4
+
+# JSON files (usually 2 spaces)
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+indent_size = 2
