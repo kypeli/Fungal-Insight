@@ -11,58 +11,60 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = MossGreen,
-    onPrimary = OnMossGreen,
-    primaryContainer = MossGreenContainer,
-    onPrimaryContainer = OnMossGreenContainer,
-    secondary = Terracotta,
-    onSecondary = OnTerracotta,
-    secondaryContainer = TerracottaContainer,
-    onSecondaryContainer = OnTerracottaContainer,
-    tertiary = MushroomBeige,
-    onTertiary = OnMushroomBeige,
-    tertiaryContainer = MushroomBeigeContainer,
-    onTertiaryContainer = OnMushroomBeigeContainer,
-    background = Parchment,
-    onBackground = OnParchment,
-    surface = Parchment,
-    onSurface = OnParchment,
-    surfaceVariant = SurfaceContainerHighest,
-    onSurfaceVariant = Outline,
-    outline = Outline,
-    outlineVariant = OutlineVariant,
-    error = Terracotta, // Using Terracotta for consistency in "Nature" theme
-    onError = OnTerracotta,
-)
+private val DarkColorScheme =
+    darkColorScheme(
+        primary = MossGreen,
+        onPrimary = OnMossGreen,
+        primaryContainer = MossGreenContainer,
+        onPrimaryContainer = OnMossGreenContainer,
+        secondary = Terracotta,
+        onSecondary = OnTerracotta,
+        secondaryContainer = TerracottaContainer,
+        onSecondaryContainer = OnTerracottaContainer,
+        tertiary = MushroomBeige,
+        onTertiary = OnMushroomBeige,
+        tertiaryContainer = MushroomBeigeContainer,
+        onTertiaryContainer = OnMushroomBeigeContainer,
+        background = Parchment,
+        onBackground = OnParchment,
+        surface = Parchment,
+        onSurface = OnParchment,
+        surfaceVariant = SurfaceContainerHighest,
+        onSurfaceVariant = Outline,
+        outline = Outline,
+        outlineVariant = OutlineVariant,
+        error = Terracotta, // Using Terracotta for consistency in "Nature" theme
+        onError = OnTerracotta,
+    )
 
-private val LightColorScheme = lightColorScheme(
-    primary = MossGreen,
-    onPrimary = OnMossGreen,
-    primaryContainer = MossGreenContainer,
-    onPrimaryContainer = OnMossGreenContainer,
-    secondary = Terracotta,
-    onSecondary = OnTerracotta,
-    secondaryContainer = TerracottaContainer,
-    onSecondaryContainer = OnTerracottaContainer,
-    tertiary = MushroomBeige,
-    onTertiary = OnMushroomBeige,
-    tertiaryContainer = MushroomBeigeContainer,
-    onTertiaryContainer = OnMushroomBeigeContainer,
-    background = Parchment,
-    onBackground = OnParchment,
-    surface = Parchment,
-    onSurface = OnParchment,
-    surfaceVariant = SurfaceContainerHighest,
-    onSurfaceVariant = Outline,
-    outline = Outline,
-    outlineVariant = OutlineVariant,
-)
+private val LightColorScheme =
+    lightColorScheme(
+        primary = MossGreen,
+        onPrimary = OnMossGreen,
+        primaryContainer = MossGreenContainer,
+        onPrimaryContainer = OnMossGreenContainer,
+        secondary = Terracotta,
+        onSecondary = OnTerracotta,
+        secondaryContainer = TerracottaContainer,
+        onSecondaryContainer = OnTerracottaContainer,
+        tertiary = MushroomBeige,
+        onTertiary = OnMushroomBeige,
+        tertiaryContainer = MushroomBeigeContainer,
+        onTertiaryContainer = OnMushroomBeigeContainer,
+        background = Parchment,
+        onBackground = OnParchment,
+        surface = Parchment,
+        onSurface = OnParchment,
+        surfaceVariant = SurfaceContainerHighest,
+        onSurfaceVariant = Outline,
+        outline = Outline,
+        outlineVariant = OutlineVariant,
+    )
 
 @Composable
 fun MushroomTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme
     val view = LocalView.current
@@ -77,6 +79,6 @@ fun MushroomTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }

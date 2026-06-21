@@ -24,23 +24,33 @@ sealed class UiState {
      * Identification completed successfully.
      * @property result The description returned by Gemini.
      */
-    data class Success(val result: String) : UiState()
-
+    data class Success(
+        val result: String,
+    ) : UiState()
 
     /**
      * Identification failed.
      * @property message A human-readable description of the failure.
      */
-    data class Error(val message: String) : UiState()
+    data class Error(
+        val message: String,
+    ) : UiState()
 }
 
 /**
  * ViewModel for the mushroom identification screen.
  *
- * Decodes a photo from a content URI, sends it to [GeminiService] for analysis,
- * and exposes the result via [uiState].
+ * This ViewModel handles the logic for identifying mushrooms from a provided image URI.
+ * It manages the following responsibilities:
+ * - Decodes the image from the given [Uri].
+ * - Interacts with [GeminiService] to obtain an identification description.
+ * - Manages and exposes the current [UiState] to the UI.
+ *
+ * @param application The [Application] instance, required by [AndroidViewModel].
  */
-class IdentificationViewModel(application: Application) : AndroidViewModel(application) {
+class IdentificationViewModel(
+    application: Application,
+) : AndroidViewModel(application) {
     private val geminiService = GeminiService()
 
     private val _uiState = MutableStateFlow<UiState>(UiState.Idle)
@@ -61,24 +71,28 @@ class IdentificationViewModel(application: Application) : AndroidViewModel(appli
         viewModelScope.launch {
             _uiState.value = UiState.Loading
             try {
-                val bitmap = withContext(Dispatchers.IO) {
-                    val source = ImageDecoder.createSource(
-                        getApplication<Application>().contentResolver, uri
-                    )
-                    ImageDecoder.decodeBitmap(source) { decoder, _, _ ->
-                        decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
+                val bitmap =
+                    withContext(Dispatchers.IO) {
+                        val source =
+                            ImageDecoder.createSource(
+                                getApplication<Application>().contentResolver,
+                                uri,
+                            )
+                        ImageDecoder.decodeBitmap(source) { decoder, _, _ ->
+                            decoder.allocator = ImageDecoder.ALLOCATOR_SOFTWARE
+                        }
                     }
-                }
                 if (bitmap == null) {
                     _uiState.value = UiState.Error("Failed to load image")
                     return@launch
                 }
                 val result = geminiService.describePicture(bitmap)
-                _uiState.value = if (result != null) {
-                    UiState.Success(result)
-                } else {
-                    UiState.Error("Failed to identify mushroom")
-                }
+                _uiState.value =
+                    if (result != null) {
+                        UiState.Success(result)
+                    } else {
+                        UiState.Error("Failed to identify mushroom")
+                    }
             } catch (e: Exception) {
                 _uiState.value = UiState.Error(e.message ?: "Unknown error occurred")
             }
