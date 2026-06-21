@@ -8,5 +8,5 @@ data class Mushroom(
     val name: String,
     val scientificName: String,
     val description: String,
-    val imageRes: Int? = null
+    val imageRes: Int? = null,
 )
