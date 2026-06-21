@@ -1,11 +1,25 @@
 <resources>
-    <string name="app_name">Mushrooms</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Fungal Insight</string>
+    <string name="action_settings">Asetukset</string>
+
+    <string name="explorer_dashboard">Tutkimusnäkymä</string>
+    <string name="take_a_photo">Ota kuva</string>
+    <string name="capture_mushroom">Kuvaa sieni</string>
+    <string name="retake_photo">Ota uusi kuva</string>
+    <string name="identify_species">Tunnista laji</string>
+    <string name="idle_description">Tunnista luonnonvaraisia sieniä ottamalla niistä kuva. Saat tiedot syötävyydestä ja lajista välittömästi.</string>
+    <string name="identification_result">Tunnistustulos</string>
+    <string name="error_format">Virhe: %1$s</string>
+    <string name="invalid_key">Virheellinen avain</string>
+
+    <string name="error_failed_to_load_image">Kuvan lataaminen epäonnistui</string>
+    <string name="error_failed_to_identify">Sienen tunnistaminen epäonnistui</string>
+
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label">Ensimmäinen sivu</string>
+    <string name="second_fragment_label">Toinen sivu</string>
+    <string name="next">Seuraava</string>
+    <string name="previous">Edellinen</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -29,7 +43,7 @@
         est.\n\n
         Aenean nunc velit, lacinia sed dolor sed, ultrices viverra nulla. Etiam a venenatis nibh.
         Morbi laoreet, tortor sed facilisis varius, nibh orci rhoncus nulla, id elementum leo dui
-        non lorem. Nam mollis ipsum quis auctor varius. Quisque elementum eu libero sed commodo. In
+        non lorem. Nam mollis ipsum quis auctor varius. For elementum eu libero sed commodo. In
         eros nisl, imperdiet vel imperdiet et, scelerisque a mauris. Pellentesque varius ex nunc,
         quis imperdiet eros placerat ac. Duis finibus orci et est auctor tincidunt. Sed non viverra
         ipsum. Nunc quis augue egestas, cursus lorem at, molestie sem. Morbi a consectetur ipsum, a

@@ -48,12 +48,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.FileProvider
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.kypeli.mushrooms.R
 import com.kypeli.mushrooms.ui.theme.MushroomTheme
 import com.kypeli.mushrooms.viewmodel.IdentificationViewModel
 import com.kypeli.mushrooms.viewmodel.UiState
@@ -146,11 +148,11 @@ fun IdentificationContent(
                 title = {
                     Column {
                         Text(
-                            "Fungal Insight",
+                            stringResource(R.string.app_name),
                             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                         )
                         Text(
-                            "Explorer Dashboard",
+                            stringResource(R.string.explorer_dashboard),
                             style = MaterialTheme.typography.labelLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -196,7 +198,7 @@ fun IdentificationContent(
                                 tint = MaterialTheme.colorScheme.primary,
                             )
                             Text(
-                                text = "Take a Photo",
+                                text = stringResource(R.string.take_a_photo),
                                 style = MaterialTheme.typography.bodyLarge,
                                 color = MaterialTheme.colorScheme.primary,
                             )
@@ -238,7 +240,7 @@ fun IdentificationContent(
                 ) {
                     Icon(imageVector = Icons.Filled.PhotoCamera, contentDescription = null)
                     Spacer(modifier = Modifier.padding(horizontal = 4.dp))
-                    Text(if (photoUri == null) "Capture Mushroom" else "Retake Photo")
+                    Text(if (photoUri == null) stringResource(R.string.capture_mushroom) else stringResource(R.string.retake_photo))
                 }
 
                 if (photoUri != null) {
@@ -260,7 +262,7 @@ fun IdentificationContent(
                                     horizontal = 4.dp,
                                 ),
                         )
-                        Text("Identify Species")
+                        Text(stringResource(R.string.identify_species))
                     }
                 }
             }
@@ -268,11 +270,11 @@ fun IdentificationContent(
             // Results Section
             Spacer(modifier = Modifier.height(24.dp))
 
-            when (uiState) {
+            when (val state = uiState) {
                 UiState.Idle -> {
                     if (photoUri == null) {
                         Text(
-                            "Identify mushrooms in the wild by taking a photo. Get safety status and species details instantly.",
+                            stringResource(R.string.idle_description),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             modifier = Modifier.padding(horizontal = 16.dp),
@@ -306,13 +308,13 @@ fun IdentificationContent(
                     ) {
                         Column(modifier = Modifier.padding(20.dp)) {
                             Text(
-                                "Identification Result",
+                                stringResource(R.string.identification_result),
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                                 color = MaterialTheme.colorScheme.primary,
                             )
                             Spacer(modifier = Modifier.height(12.dp))
                             MarkdownText(
-                                markdown = uiState.result,
+                                markdown = state.result,
                                 style = MaterialTheme.typography.bodyLarge,
                             )
                         }
@@ -326,7 +328,7 @@ fun IdentificationContent(
                         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
                     ) {
                         Text(
-                            text = "Error: ${uiState.message}",
+                            text = stringResource(R.string.error_format, state.message),
                             modifier = Modifier.padding(16.dp),
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onErrorContainer,
