@@ -2,9 +2,11 @@ package com.kypeli.mushrooms.ui.screens
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.kypeli.mushrooms.R
 import com.kypeli.mushrooms.navigation.NavKeys
 
 @Composable
@@ -26,7 +28,7 @@ fun MainScreen() {
                 }
 
                 null -> {
-                    NavEntry(key) { Text("Invalid key") }
+                    NavEntry(key) { Text(stringResource(R.string.invalid_key)) }
                 }
             }
         },

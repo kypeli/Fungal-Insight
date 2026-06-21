@@ -5,6 +5,7 @@ import android.graphics.ImageDecoder
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.kypeli.mushrooms.R
 import com.kypeli.mushrooms.data.GeminiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -83,7 +84,7 @@ class IdentificationViewModel(
                         }
                     }
                 if (bitmap == null) {
-                    _uiState.value = UiState.Error("Failed to load image")
+                    _uiState.value = UiState.Error(getApplication<Application>().getString(R.string.error_failed_to_load_image))
                     return@launch
                 }
                 val result = geminiService.describePicture(bitmap)
@@ -91,7 +92,7 @@ class IdentificationViewModel(
                     if (result != null) {
                         UiState.Success(result)
                     } else {
-                        UiState.Error("Failed to identify mushroom")
+                        UiState.Error(getApplication<Application>().getString(R.string.error_failed_to_identify))
                     }
             } catch (e: Exception) {
                 _uiState.value = UiState.Error(e.message ?: "Unknown error occurred")
